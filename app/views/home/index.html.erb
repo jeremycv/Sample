@@ -1,0 +1,18 @@
+
+<div id="content">
+<%= render :partial => "shared/search" %>
+
+
+	<table width=100% border=0 cellspacing=0 cellpadding=0>
+		<tr>
+			<td>
+				<div id="search_results">
+					<%= render :partial => @teams if @teams %>
+					<%= render :partial => @skills if @skills %>
+					<%= render :partial => @employees if @employees %>
+				</div>
+				
+			</td>
+		</tr>
+	</table>
+</div>

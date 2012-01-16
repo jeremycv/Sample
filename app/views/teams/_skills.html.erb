@@ -1,0 +1,11 @@
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+		<tr class='someclass'>
+			<td class="Underline" width=25%><%= link_to(skills.name, team_skill_path(@team, skills)) %>&nbsp;</td>
+			<td class="Underline" width=5%><%= (skills.availability)? "#{image_tag('cross-icon.gif')}" : "#{image_tag('cross-icon.gif')}" %>&nbsp;</td>
+			<td class="Underline" width=10% ><%= skills.complexity %>&nbsp;</td>
+			<td class="Underline" width=15% align='right'><%= skills.number_people_required %>&nbsp;</td>
+			<td class='Underline' width=15% align='right'><%= skills.get_availability(skills.id) %></td>
+			<td class="Underline" width=15% align='right'><%= skills.red_threshold %>&nbsp;</td>
+			<td class="Underline" width=15% align='right'><%= skills.amber_threshold %>&nbsp;</td>
+		</tr>
+</table>

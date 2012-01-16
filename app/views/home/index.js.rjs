@@ -1,0 +1,9 @@
+
+page.replace_html "search_results", :partial => "shared/skill_title" if @skills
+page.insert_html :bottom, "search_results", :partial => @skills if @skills
+
+page.replace_html "search_results", :partial => "shared/team_title" if @teams
+page.insert_html :bottom, "search_results", :partial => @teams if @teams
+
+page.replace_html "search_results", :partial => "shared/employee_title" if @employees
+page.insert_html :bottom, "search_results", :partial => @employees if @employees

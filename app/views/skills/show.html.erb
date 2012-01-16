@@ -1,0 +1,62 @@
+<%= render :partial => "shared/outline" %>
+<%= render :partial => "shared/team_summary" %>
+
+<table width=90% border=0 cellpadding=0 cellspacing=0>
+	<% form_for(@skill) do | f | %>
+	
+		<table width=100% border=0 cellpadding=0 cellspacing=0>
+			<tr>
+				<td width=25%>&nbsp;</td>
+				<td>&nbsp;</td>
+			</tr>
+			<tr>
+				<td colspan=2 class='curved'>Skill Details</td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top">Name:</td>
+				<td class="Field"><%= @skill.name %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top">Complexity of skill:</td>
+				<td class="Field"><%= @skill.complexity %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top">Red threshold:</td>
+				<td class="Field"><%= @skill.red_threshold %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top">Amber threshold:</td>
+				<td class="Field"><%= @skill.amber_threshold %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top">Currency level:</td>
+				<td class="Field"><%= number_to_percentage(@skill.get_currency(@skill.id).to_s, {:precision => 1}) %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top">Number of people available:</td>
+				<td class="Field"><%= @skill.get_availability(@skill.id).to_s %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top">Number of people required:</td>
+				<td class="Field"><%= @skill.number_people_required %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top">Available for use?</td>
+				<td class="Field">
+					<%= "Yes" if @skill.availability %>
+					<%= "No" if !@skill.availability %>
+				</td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top">Overall status:</td>
+				<% status = @skill.status %>
+				<% colour = @skill.colour(status) %>
+				<td class="Field">
+					<b><font color=<%= "#{colour}" %>><%= status %></font></b>
+				</td>			</tr>
+		</table>
+	<% end %>
+</table>
+<p> </p>
+<%= render :partial => "enrollments" %>
+

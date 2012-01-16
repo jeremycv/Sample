@@ -1,0 +1,9 @@
+div_id = "skills"
+div_id_collapse = "skills_collapse"
+div_id_expand = "skills_expand"
+
+page.hide div_id_collapse
+page.show div_id_expand
+
+page.visual_effect :fade, "skills"
+page.visual_effect :fade, "skills_title"

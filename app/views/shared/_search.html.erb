@@ -1,0 +1,20 @@
+<p>
+	<div id="adv_search">
+	<% form_remote_tag :action => 'index', :method => 'get' do %>
+	
+		<div class="search_element">
+			<strong>Search:&nbsp;</strong>
+			<%= select_tag :selection, options_for_select( %w(Teams Employees Skills), h(params[:selection])) %>
+		</div>
+		
+		<div class="search_element">
+			<strong>with status of:</strong>
+			<%= select_tag :status, options_for_select( ["All"] + %w(Green Amber Red), h(params[:status])) %>
+		</div>
+		
+		<div class="search_element">
+			<%= submit_tag "Search" %>
+		</div>
+	<% end %>
+	</div>
+</p>

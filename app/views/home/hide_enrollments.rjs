@@ -1,0 +1,13 @@
+div_id = "skills_#{@salary_number}"
+div_id_collapse = "skills_#{@salary_number}_collapse"
+div_id_expand = "skills_#{@salary_number}_expand"
+
+#page.hide div_id
+#page.replace_html div_id, :partial => "enrol_title"
+#page.insert_html :bottom, div_id, :partial => @enrollments
+
+page.hide div_id_collapse
+page.show div_id_expand
+
+page.show div_id
+page.visual_effect :fade, div_id

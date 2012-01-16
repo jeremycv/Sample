@@ -1,0 +1,69 @@
+<%= render :partial => "shared/outline" %>
+
+<table width=90% border=0 cellpadding=0 cellspacing=0>
+	<% form_for([@employee, @enrollment]) do | f | %>
+	  	<%= render 'shared/error_messages', :object => f.object %>
+		<table width=100% border=0 cellpadding=0 cellspacing=0>
+			<tr>
+				<td width=25%>&nbsp;</td>
+				<td width=75%>&nbsp;</td>
+			</tr>
+		
+			<tr>
+				<td colspan=2 class='curved'>Employee - <%= @employee.name %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= "Skill:" %></td>
+				<td class="Field"><%= @skill.name %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= "Level:" %></td>
+				<td class="Field">
+					<%= "Expert" if @enrollment.level == 1.0 %>
+					<%= "Intermediate" if @enrollment.level == 0.7 %>
+					<%= "Beginner" if @enrollment.level == 0.5 %>
+				</td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= "Home team skill?" %></td>
+				<td class="Field">
+					<%= (@skill.team_id == @employee.team_id)? "Yes" : "No" %>
+				</td>
+			</tr>			
+			<tr>
+				<td class="Label" valign="top"><%= "Complexity:" %></td>
+				<td class="Field"><%= @skill.complexity %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= "Currency:" %></td>
+				<td class="Field"><%= number_to_percentage(@enrollment.currency, :precision => 2) %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= "Score:" %></td>
+				<td class="Field"><%= number_to_percentage(@enrollment.score, {:precision => 2}) %></td> 
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= "Status:" %></td>
+				<td class="Field"><%= @enrollment.status %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= "Currently performing this task?" %></td>
+				<td class="Field">
+					<%= "Yes" if @enrollment.active %>
+					<%= "No" if !@enrollment.active %>
+				</td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= "Last performed:" %></td>
+				<td class="Field"><%= @enrollment.last_performed.strftime('%d/%m/%Y') %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= "Include in reports?" %></td>
+				<td class="Field">
+					<%= "Yes" if @enrollment.reportable %>
+					<%= "No" if !@enrollment.reportable %>
+				</td>
+			</tr>
+		</table>
+	<% end %>
+</table>

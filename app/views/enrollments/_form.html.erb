@@ -1,0 +1,84 @@
+
+<table width=90% border=0 cellpadding=0 cellspacing=0>
+	<% form_for([@employee, @enrollment]) do | f | %>
+	  	<%= render 'shared/error_messages', :object => f.object %>
+	
+		<table width=100% border=0 cellpadding=0 cellspacing=0>
+			<tr>
+				<td width=25%>&nbsp;</td>
+				<td width=75%>&nbsp;</td>
+			</tr>
+		
+			<tr>
+				<td colspan=2 class='curved'>Employee's Skill Details</td>
+			</tr>
+
+			<tr>
+				<td class="Label" valign="top"><%= f.label :skill_id, "Skill:" %></td>
+					<% all_skills = Skill.find(:all, :order => 'name').collect {|c| [c.name, c.id]} %>
+					<%  if @enrollment.skill_id.to_s != "" %>
+						<% add_condition = "AND skill_id != #{@enrollment.skill_id}" %>
+					<% else %>
+						<% add_condition = "" %>
+					<% end %>
+					<% my_skills = Enrollment.find(:all, :conditions => "employee_id = #{@employee.id} " + add_condition).collect {|c| [c.skill.name, c.skill_id]} %>
+					
+				<td class="Field"><%= f.select :skill_id, (all_skills - my_skills), {:include_blank => true} %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= f.label :level, "Level:" %></td>
+				<td class="Field"><%= f.select :level, options_for_select( {
+							"" => "",
+							"Beginner" => 0.5,
+							"Intermediate" => 0.7,
+							"Expert" => 1.0
+							}, @enrollment.level )%></td>
+			</tr>
+			<% if controller.action_name == "show" %>
+				<tr>
+					<td class="Label" valign="top"><%= "Home team skill?" %></td>
+					<td class="Field">
+						<%= (@skill.team_id == @employee.team_id)? "Yes" : "No" %>
+					</td>
+				</tr>
+				<tr>
+					<td class="Label" valign="top"><%= "Complexity:" %></td>
+					<td class="Field"><%= @skill.complexity %></td>
+				</tr>
+				<tr>
+					<td class="Label" valign="top"><%= "Currency:" %></td>
+					<td class="Field"><%= number_to_percentage(@enrollment.currency, :precision => 2) %></td>
+				</tr>
+				<tr>
+					<td class="Label" valign="top"><%= "Score:" %></td>
+					<td class="Field"><%= number_to_percentage(@enrollment.score, {:precision => 2}) %></td> 
+				</tr>
+				<tr>
+					<td class="Label" valign="top"><%= "Currency status:" %></td>
+					<td class="Field"><%= @enrollment.status %></td>
+				</tr>
+			<% end %>
+			<tr>
+				<td class="Label" valign="top"><%= f.label :active, "Currently performing this task?" %></td>
+				<td class="Field">
+					<%= f.radio_button :active, :true, options = {:checked => true} %> Yes
+					<%= f.radio_button :active, :false %> No
+				</td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= f.label :last_performed, "Date Last Performed:" %></td>
+				<td class="Field"><%= date_select( "enrollment", "last_performed", :order => [:day, :month, :year], :start_year => 2000, :end_year => 2011) %></td>
+			</tr>
+			<tr>
+				<td class="Label" valign="top"><%= f.label :reportable, "Include in reports?" %></td>
+				<td class="Field">
+					<%= f.radio_button :reportable, :true, options = {:checked => true} %> Yes
+					<%= f.radio_button :reportable, :false %> No
+				</td>
+			</tr>
+		</table>
+		
+		<%= render 'shared/submit', :object => f.object %>
+
+	<% end %>
+</table>

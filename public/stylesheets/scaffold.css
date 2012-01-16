@@ -1,0 +1,177 @@
+body { 
+	background-color: #cbcbcb; 
+	color: #333;
+}
+
+#content {
+  margin: 1em;
+  background: #fff;
+  padding: 1em;
+  -moz-border-radius: 1em;
+  -webkit-border-radius: 1em;
+  border-radius: 1em;
+}
+
+body, p, ol, ul {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size:   12px;
+  line-height: 18px;
+}
+
+#tool {margin: 0; padding: 0; background-color: #fff; list-style-type:none; float: left; width: 100%;}
+#tool li {margin: 1; padding: 0; float: left;}
+#tool a {float:left; width: 125px; color: #000; text-decoration: none; line-height: 4.0; text-align: center; border-right: 1px solid #fff;}
+#tool a:visited {background-color: #fff; color: #000;}
+#tool a:hover {background-color: #fff; color: #000;}
+#tool_plugins a, #tool_categ a { background-color: #fff; color: #000; font-weight: bold; border-bottom: 0px dashed #efefef; text-align: left; }
+
+#nav {margin: 0; padding: 0; background-color: #003366; list-style-type:none; float: left; width: 100%;}
+#nav li {margin: 1; padding: 0; float: left;}
+#nav a {float:left; width: 125px; color: #000; text-decoration: none; line-height: 4.0; text-align: center; border-right: 1px solid #fff;}
+#nav a:visited {background-color: #003366; color: #fff;}
+#nav a:hover {background-color: #F0F8FF; color: #000;}
+#nav_plugins a, #nav_categ a { background-color: #f0f0f0; color: #000; font-weight: bold; }
+
+
+tr.someclass {
+	
+    font-family: Arial; 
+    font-size: 100%; 
+	background-color: #fff;
+	line-height: 1.5;
+}
+	
+tr.someclass:hover {
+	background-color: #F7F7F7;
+}
+
+TD.curved {
+
+	height: 10px;
+	margin: -0em;
+	background: #cbcbcb;
+	padding: 0.4em;
+	-moz-border-radius: 3em;
+	-webkit-border-radius: 3em;
+	border-radius: 0em;
+	color:white;
+	font-weight:bold; 
+	font-size: 16px; 
+	font-family: Arial;
+
+}
+
+TD.toolbox {
+
+	height: 10px;
+	margin: 0em;
+	background: #fff;
+	padding: 1em;
+	-moz-border-radius: 1em;
+	-webkit-border-radius: 1em;
+	border-radius: 2em;
+	color:white;
+	font-weight:bold; 
+	font-size: 100%; 
+	font-family: Arial;
+
+}
+
+TD.Label { 
+        color:black; 
+        font-weight:bold; 
+        font-size: 100%; 
+        font-family: Arial; 
+		
+        padding: 4px; 
+        border-bottom: 1px solid #efefef; 
+        border-left: 0px solid #efefef;
+		
+        } 
+
+TD.Field { 
+        color:black; 
+        font-size: 100%; 
+        font-family: Arial; 
+
+        padding: 4px; 
+        border-bottom: 1px solid #efefef; 
+        border-right: 0px solid #efefef;
+		
+        }
+
+
+TD.Underline { 
+        color:black; 
+        font-family: Verdana; 
+        font-size: 100%;
+        border-bottom: 1px solid #F7F7F7;
+		padding: 2px;
+		height: 20px;
+        }
+
+TD.Noline { 
+        color:black; 
+        font-family: Verdana; 
+        font-size: 100%;
+        border-bottom: 0px solid #F7F7F7;
+		padding: 2px;
+		height: 20px;
+        }
+		
+TD.ToolBar { 
+
+        color:black; 
+        font-weight:bold; 
+        font-family: Arial; 
+        font-size: 100%; 
+        background-color: #E3E4E6; 
+        padding: 4px;
+} 
+		
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a { color: #000; }
+a:visited { color: #000; }
+a:hover { color: #fff; background-color:#000; }
+
+.fieldWithErrors {
+  padding: 0.1px;
+  background-color: #ffffaa;
+  display: table;
+}
+
+#errorExplanation {
+  width: 100%;
+  border: 0px solid #c00;
+  padding: 7px;
+  padding-bottom: 7px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+

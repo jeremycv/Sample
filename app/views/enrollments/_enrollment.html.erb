@@ -1,0 +1,20 @@
+
+<div id="employee_listing">
+	<table width=98% border=0 align=center cellpadding=0 cellspacing=0>
+		<tr class='someclass'>
+			<% @skill = Skill.find(enrollment.skill_id) %>
+			<td class="Underline" width='26%'><%= link_to(@skill.name, edit_employee_enrollment_path(@employee, enrollment)) %></td>
+			<td class="Underline" width='4%'><%= (enrollment.reportable)? "#{image_tag('tick-icon.png')}" : "#{image_tag('cross-icon.gif')}" %></td>
+			<td class="Underline" width='12%'>
+				<%= "Expert" if enrollment.level == 1.0 %>
+				<%= "Intermediate" if enrollment.level == 0.7 %>
+				<%= "Beginner" if enrollment.level == 0.5 %>
+			</td>
+			<td class="Underline" width='12%'><%= @skill.complexity %></td>
+			<td class="Underline" width='12%'><b><font color=<%= "#{enrollment.colour(enrollment.status) }" %>><%= enrollment.status %></font></b></td>
+			<td align="center" class="Underline" width='10%'><%= enrollment.last_performed.strftime('%d/%m/%Y') %></td>				
+			<td align="right" class="Underline" width='12%'><%= number_to_percentage(enrollment.currency, {:precision => 1}) %></td>
+			<td align="right" class="Underline" width='12%'><%= number_to_percentage(enrollment.score, {:precision => 1}) %></td>
+		</tr>
+	</table>
+</div>

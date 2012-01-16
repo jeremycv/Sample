@@ -1,0 +1,16 @@
+
+<div id="skill_listing">
+	<table width=100% border=0 align=center cellpadding=0 cellspacing=0>
+			<tr class='someclass'>
+				<td class="Underline" width=25%><%= link_to(skill.name, skill_path(skill)) %>&nbsp;</td>
+				<td class="Underline" width=5%><%= (skill.availability)? "#{image_tag('tick-icon.png')}" : "#{image_tag('cross-icon.gif')}" %>&nbsp;</td>
+				<td class="Underline" width=10% ><%= skill.complexity %>&nbsp;</td>
+				<td class="Underline" width=10% align='right'><%= skill.number_people_required %>&nbsp;</td>
+				<td class='Underline' width=10% align='right'><%= skill.get_availability(skill.id) %></td>
+				<td class="Underline" width=10% align='right'><%= skill.red_threshold %>&nbsp;</td>
+				<td class="Underline" width=10% align='right'><%= skill.amber_threshold %>&nbsp;</td>
+				<td class='Underline' width=10% align='right'><%= number_to_percentage(skill.get_currency(skill.id), {:precision => 1}) %></td>
+				<td class="Underline" width=10% align='right'><font color=<%= "#{skill.colour(skill.status) }" %>><%= skill.status %></font></td>	
+			</tr>
+	</table>
+</div>

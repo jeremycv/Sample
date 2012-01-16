@@ -1,0 +1,36 @@
+
+<table width=100% border=0 cellpadding=0 cellspacing=0>
+	<tr>
+		<td class='ToolBar' align='left' width='30%' colspan=2>Employee</td>
+		<td class='ToolBar' align='left' width='12%'>Level</td>
+		<td class='ToolBar' align='left' width='12%'>Complexity</td>
+		<td class='ToolBar' align="center" width='10%'>Last performed</td>		
+		<td class='ToolBar' align="right" width='12%'>Currency</td>
+		<td class='ToolBar' align="right" width='12%'>Score</td>
+		<td class='ToolBar' align="right" width='2%'>&nbsp;</td>		
+		<td class='ToolBar' align="left" width='12%'>Status</td>
+	</tr>
+</table>
+
+<div id="employee_listing">
+	<table width=100% border=0 cellpadding=0 cellspacing=0>
+		<% @skill.enrollments.each do | enrollment | %>
+			<tr class='someclass'>
+				<% @employee = Employee.find(enrollment.employee_id) %>
+				<td class="Underline" width='26%'><%= link_to(@employee.name, edit_employee_enrollment_path(@employee, enrollment)) %></td>
+				<td class="Underline" width='4%'><%= (enrollment.reportable)? "#{image_tag('tick-icon.png')}" : "#{image_tag('cross-icon.gif')}" %></td>
+				<td class="Underline" width='12%'>
+					<%= "Expert" if enrollment.level == 1.0 %>
+					<%= "Intermediate" if enrollment.level == 0.7 %>
+					<%= "Beginner" if enrollment.level == 0.5 %>
+				</td>
+				<td class="Underline" width='12%'><%= @skill.complexity %></td>
+				<td class="Underline" align="center" width='10%'><%= enrollment.last_performed.strftime('%d/%m/%Y') %></td>				
+				<td class="Underline" align="right" width='12%'><%= number_to_percentage(enrollment.currency, {:precision => 1}) %></td>
+				<td class="Underline" align="right" width='12%'><%= number_to_percentage(enrollment.score, {:precision => 1}) %></td>
+				<td class="Underline" align="right" width='2%'>&nbsp;</td>		
+				<td class="Underline" width='12%'><b><font color=<%= "#{enrollment.colour(enrollment.status) }" %>><%= enrollment.status %></font></b></td>
+			</tr>
+		<% end %>
+	</table>
+</div>

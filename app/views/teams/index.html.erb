@@ -1,0 +1,28 @@
+
+<table width=100% border='0' cellspacing='0' cellpadding='2'>
+	<tr>
+		<td width=50%><h1>All Teams</h1></td>
+	</tr>
+</table>
+
+<table width=100% border='0' cellpadding='0' cellspacing='0'>
+	<tr>		
+		<td align='right'>
+			<%= "#{image_tag('feed.png')}" %> <%= link_to "New Team", new_team_path %>
+		</td>
+	</tr>
+</table>
+
+<div id="team_listing">
+	<table width=100% border=0 cellpadding=0 cellspacing=0>
+		<% @teams.each do |team| %>
+				<tr class="someclass">
+					<td class="Underline" width=20%><%= link_to(team.name, team) %></td>
+					<td class="Underline"><%= team.business_unit %></td>
+					<% status = team.status %>
+					<% colour = team.colour(status) %>
+					<td class="Underline" width=15%><font color=<%= "#{colour}" %>><%= status %></font></td>
+				</tr>
+		<% end %>
+	</table>
+</div>

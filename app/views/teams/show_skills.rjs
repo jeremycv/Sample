@@ -1,0 +1,17 @@
+#page[:skills_title].show
+
+#page.replace_html "skills", :partial => "skills"
+#page.visual_effect :appear, "skills"
+
+#page.replace_html "employees", :partial => @employees
+
+#page[:skills].reload :locals => { :skills => @skills }
+div_id_collapse = "skills_collapse"
+div_id_expand = "skills_expand"
+
+page[:skills_title].show
+page.replace_html "skills", :partial => @skills
+page.visual_effect :appear, "skills"
+
+page.hide div_id_expand
+page.show div_id_collapse

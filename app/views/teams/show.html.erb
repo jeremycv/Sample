@@ -1,0 +1,54 @@
+
+<%= render :partial => "shared/outline" %>
+<table width=100% border='0' cellspacing='0' cellpadding='0'>
+	<tr>
+		<td width=40%><h1>Team: <%= @team.name %></h1></td>
+	</tr>
+</table>
+<%= render :partial => "shared/team_summary" %>
+<p> </p>
+	
+	<table width=100% border=0 cellpadding=0 cellspacing=0>
+		<td class="Noline" >
+			<Div id="skills_expand" style=display:inline %>
+				<%# "#{image_tag('expand.png')}" %>
+				<font size="3"><%= link_to_remote "Show team skill definitions...", :url => {:action => 'show_skills', "id" => "#{@team.id}" }%></font>
+			</Div>
+		
+			<Div id="skills_collapse" style=display:none %>
+				<%# "#{image_tag('collapse.png')}" %>
+				<font size="3"><%= link_to_remote "Hide team skill definitions...", :url => {:action => 'hide_skills', "id" => "#{@team.id}"  }%></font>
+			</Div>
+		</td>
+	</table>
+	
+	<Div id="skills_title" style=display:none>
+		
+		<table width=100% border=0 cellpadding=0 cellspacing=0>
+			<tr>
+				<td width='40%'>&nbsp;</td>
+				<td><%= "#{image_tag('skill.png')}" %><b><%= link_to "Add new Skill", new_team_skill_path(@team) %></b></td>
+			</tr>
+		</table>
+		
+		<%= render :partial => "shared/skill_title" %>
+		<Div id="skills" style=display:none>
+			<%# The team's skills are loaded here via the above Ajax call %>
+
+			<br>		
+		</Div>
+	</Div>
+	
+	<p>
+	
+	</p>
+	
+	<Div id ="employees" style=display:inline>
+		<table width=100% border=0 cellpadding=0 cellspacing=0>
+			<tr>
+				<td class='ToolBar' align='left' width='40%'>Employee Name</td>
+				<td class='ToolBar' align='left' width='60%'><%= "#{image_tag('user.png')}" %> <%= link_to "Add new Employee", new_team_employee_path(@team) %></td>				
+			</tr>
+		</table>
+		<%= render :partial => @employees %>
+	</Div>
