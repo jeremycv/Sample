@@ -9,8 +9,7 @@ class TeamsController < ApplicationController
     
     @team = Team.create(params[:team])
     if @team.save
-     # redirect_to @team
-     render :action => :new
+      redirect_to @team
     else
       render :action => :new
     end
