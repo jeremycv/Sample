@@ -2,7 +2,7 @@ class Team < ActiveRecord::Base
   
   include ApplicationHelper
   
-  before_save :calculate_status
+  before_save :calculate_status unless @team.any?
   
   has_many :employees, :order => "name", :dependent => :destroy
   has_many :skills, :order => "name", :dependent => :destroy
