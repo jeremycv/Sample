@@ -27,8 +27,8 @@ class TeamsController < ApplicationController
   def show
     
     @team = Team.find(params[:id])
-    @employees = @team.employees
-    @skills = @team.skills
+    #@employees = @team.employees
+    #@skills = @team.skills
     
     respond_to do |format|
       format.html # show.html.erb
