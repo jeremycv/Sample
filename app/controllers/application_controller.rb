@@ -9,13 +9,13 @@ class ApplicationController < ActionController::Base
   # filter_parameter_logging :password
   
   def show_skills
-   
-     @team = Team.find(params[:id])
-     @skills = @team.skills
 
-      respond_to do |format|
-         format.js
-      end
+    @team = Team.find(params[:id])
+    @skills = @team.skills
+
+     respond_to do |format|
+       format.js
+     end
   end
   
   def hide_skills
