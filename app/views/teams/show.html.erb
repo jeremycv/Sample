@@ -15,7 +15,7 @@
 				<font size="3"><%= link_to_remote "Show team skill definitions...", :url => {:action => 'show_skills', "id" => "#{@team.id}" }%></font>
 			</Div>
 		
-			<Div id="skills_collapse" style=display:none %>
+			<Div id="skills_collapse" style=display:inline %>
 				<%# "#{image_tag('collapse.png')}" %>
 				<font size="3"><%= link_to_remote "Hide team skill definitions...", :url => {:action => 'hide_skills', "id" => "#{@team.id}"  }%></font>
 			</Div>
