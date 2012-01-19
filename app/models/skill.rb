@@ -64,7 +64,7 @@ class Skill < ActiveRecord::Base
   
   def self.return_search(status)
     
-    search_string = "Team.find :all, :order => 'name'"
+    search_string = "Skill.find :all, :order => 'name'"
 
     if status != "All" and status != ""
       search_string = search_string + ", :conditions => \"status = '#{status}'\""
