@@ -9,7 +9,7 @@
 				<td class='Underline' width=10% align='right'><%= skill.get_availability(skill.id) %></td>
 				<td class="Underline" width=10% align='right'><%= skill.red_threshold %>&nbsp;</td>
 				<td class="Underline" width=10% align='right'><%= skill.amber_threshold %>&nbsp;</td>
-				<td class='Underline' width=10% align='right'><%= number_to_percentage(skill.get_currency(skill.id), {:precision => 1}) %></td>
+				<td class='Underline' width=10% align='right'><%= skill.get_currency(skill.id) %></td>
 				<td class="Underline" width=10% align='right'><font color=<%= "#{skill.colour(skill.status) }" %>><%= skill.status %></font></td>	
 			</tr>
 	</table>
