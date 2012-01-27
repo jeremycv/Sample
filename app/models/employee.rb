@@ -38,7 +38,8 @@ class Employee < ActiveRecord::Base
   end
   
   def calculate_status()
-    self.status = get_status(id)
+    #self.status = get_status(id)
+    self.status = "Green"
   end
 
   def self.find_with_options(status = nil)
