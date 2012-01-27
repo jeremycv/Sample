@@ -28,7 +28,7 @@ class Skill < ActiveRecord::Base
     
   def get_currency(skill_id = nil)
     
-    Enrollment.find(:all, :select => "sum(currency) as total, count(*) as count", :conditions => {:skill_id => "#{skill_id}", :reportable => true}).map {|c| c.count > 0 ? (c.total.to_f/c.count.to_f) : 0.0 }.pop
+    Enrollment.find(:all, :select => "sum(currency) as total, count(*) as count", :conditions => {:skill_id => "#{skill_id}", :reportable => true}).map {|c| c.count.to_i > 0 ? c.total.to_f/c.count.to_f : 0.0 }.pop
   end
   
   def get_availability(skill_id = nil)
