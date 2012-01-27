@@ -33,8 +33,8 @@ class Skill < ActiveRecord::Base
   
   def get_availability(skill_id = nil)
     
-    Enrollment.find(:all, :select => "count(*) as total").map {|c| c.total}.to_s.to_i
-  
+    #Enrollment.find(:all, :select => "count(*) as total", :conditions => {:skill_id => "#{skill_id}", :reportable => true}).map {|c| c.total}.to_s.to_i
+    return 8
   end
   
   def calculate_status(skill_id = nil)
