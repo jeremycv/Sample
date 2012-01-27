@@ -4,7 +4,7 @@ class Skill < ActiveRecord::Base
   
   VALID_COMPLEXITY = %w(High Medium Low)
   
-  before_save :calculate_status unless @skill.nil?
+  before_save :calculate_status
   
   belongs_to :team
   has_many :enrollments
