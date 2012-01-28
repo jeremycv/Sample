@@ -11,7 +11,7 @@ class Team < ActiveRecord::Base
   
   def get_status(team_id = nil)
     
-    if team_id != nill
+    if team_id != nil
       states = Employee.find(:all, :select => "status", :conditions => {:team_id => "#{team_id}"}, :group => "status").collect {|c| c.status}
     else
       states = []
