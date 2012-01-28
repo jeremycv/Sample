@@ -7,7 +7,7 @@ class Employee < ActiveRecord::Base
   has_many :enrollments, :dependent => :destroy
   
   before_save :calculate_status
-  after_save  :save_team
+  #after_save  :save_team
   
   validates_presence_of :name, :message => " - Each employee should be called by his/her name. No one likes being called Oi Oi."
   validates_presence_of :employee_id, :message => " - The Employee Salary number is a required piece of information."""
