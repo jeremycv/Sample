@@ -80,8 +80,8 @@ class Enrollment < ActiveRecord::Base
     amber_threshold = amber_threshold ? amber_threshold : 90
     
     status = "Amber"
-    status = "Green" if currency > amber_threshold
-    status = "Red" if currency <= red_threshold
+    status = "Green" if currency > amber_threshold.to_f
+    status = "Red" if currency <= red_threshold.to_f
     self.status = status
   end
   
