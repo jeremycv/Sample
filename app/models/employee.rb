@@ -6,7 +6,7 @@ class Employee < ActiveRecord::Base
   has_many :skills, :through => :enrollments
   has_many :enrollments, :dependent => :destroy
   
-  before_save :calculate_status
+  #before_save :calculate_status
   #after_save  :save_team
   
   validates_presence_of :name, :message => " - Each employee should be called by his/her name. No one likes being called Oi Oi."
