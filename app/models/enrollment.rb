@@ -74,14 +74,14 @@ class Enrollment < ActiveRecord::Base
   def calculate_status
     
     red_threshold = @skill.red_threshold
-    red_threshold = red_threshold ? red_threshold.to_f : 70.0
+    red_threshold = red_threshold ? red_threshold : 70
     
     amber_threshold = @skill.amber_threshold
-    amber_threshold = amber_threshold ? amber_threshold.to_f : 90.0
+    amber_threshold = amber_threshold ? amber_threshold : 90
     
-    if (currency <= red_threshold)
+    if (currency <= number_with_precision(red_threshold, precision=1))
       status = "Red"
-    elsif (currency > amber_threshold)
+    elsif (currency > number_with_precision(amber_threshold, precision=1))
       status = "Green"
     else
       status = "Amber"
