@@ -39,7 +39,7 @@ class Employee < ActiveRecord::Base
   
   def calculate_status()
     #self.status = get_status(id)
-    self.status = params(:id)
+    self.status = params[:id]
   end
 
   def self.find_with_options(status = nil)
