@@ -28,13 +28,16 @@ class Skill < ActiveRecord::Base
     
   def get_currency(skill_id = nil)
     
-    Enrollment.find(:all, :select => "sum(currency) as total, count(*) as count", :conditions => {:skill_id => "#{skill_id}", :reportable => true}).map {|c| c.count.to_i > 0 ? c.total.to_f/c.count.to_f : 0.0 }.pop
+    if skill_id != nil
+      Enrollment.find(:all, :select => "sum(currency) as total, count(*) as count", :conditions => {:skill_id => "#{skill_id}", :reportable => true}).map {|c| c.count.to_i > 0 ? c.total.to_f/c.count.to_f : 0.0 }.pop
+    end
   end
   
   def get_availability(skill_id = nil)
     
-    Enrollment.find(:all, :select => "count(*) as total", :conditions => {:skill_id => "#{skill_id}", :reportable => true}).map {|c| c.total.to_i}.pop
-    
+    if skill_id != nil
+      Enrollment.find(:all, :select => "count(*) as total", :conditions => {:skill_id => "#{skill_id}", :reportable => true}).map {|c| c.total.to_i}.pop
+    end
   end
   
   def calculate_status(skill_id = nil)
