@@ -86,7 +86,7 @@ class Enrollment < ActiveRecord::Base
     else
       status = "Amber"
     end
-    self.status = 
+    self.status = status
   end
   
 end
