@@ -6,8 +6,8 @@ class Employee < ActiveRecord::Base
   has_many :skills, :through => :enrollments
   has_many :enrollments, :dependent => :destroy
   
-  #before_save :calculate_status
-  #after_save  :save_team
+  before_save :calculate_status
+  after_save  :save_team
   
   validates_presence_of :name, :message => " - Each employee should be called by his/her name. No one likes being called Oi Oi."
   validates_presence_of :employee_id, :message => " - The Employee Salary number is a required piece of information."""
@@ -38,7 +38,8 @@ class Employee < ActiveRecord::Base
   end
   
   def calculate_status()
-    self.status = get_status(id)
+    #self.status = get_status(id)
+    self.status = "Amber"
   end
 
   def self.find_with_options(status = nil)
