@@ -63,7 +63,7 @@ class Enrollment < ActiveRecord::Base
       else 
         -1
     end
-    self.currency = 100 * (Math.exp(kFactor * num_weeks))
+    self.currency = 100 * (Math.exp(kFactor * num_weeks))/1.0
   end
   
   def calculate_score
@@ -75,15 +75,15 @@ class Enrollment < ActiveRecord::Base
     
     red_threshold = @skill.red_threshold
     red_threshold = red_threshold ? red_threshold : 70
-    red = red_threshold.to_f
+    red = (red_threshold.to_f)/1.0
     
     amber_threshold = @skill.amber_threshold
     amber_threshold = amber_threshold ? amber_threshold : 90
-    amber = amber_threshold.to_f
+    amber = (amber_threshold.to_f)/1.0
     
-    if (currency/1.0 > amber/1.0)
+    if (currency > amber)
       status = "Green"
-    elsif (currency/1.0 < red/1.0)
+    elsif (currency < red)
       status = "Red"
     else
       status = "Amber"
