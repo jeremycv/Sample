@@ -75,7 +75,7 @@ class Enrollment < ActiveRecord::Base
     
     red_threshold = @skill.red_threshold.to_f
     #red_threshold = red_threshold ? red_threshold : 70
-    red = red_threshold.to_f
+    red = red_threshold.to_i
     
     amber_threshold = @skill.amber_threshold
     amber_threshold = amber_threshold ? amber_threshold : 90
