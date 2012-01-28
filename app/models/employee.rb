@@ -16,8 +16,12 @@ class Employee < ActiveRecord::Base
 
   def get_status(emp_id = nil)
     
-    states = Enrollment.find(:all, :select => "status", :conditions => {:employee_id => "#{emp_id}", :reportable => true}, :group => "status").collect {|c| c.status}
-	
+    if emp_id != nil
+      states = Enrollment.find(:all, :select => "status", :conditions => {:employee_id => "#{emp_id}", :reportable => true}, :group => "status").collect {|c| c.status}
+    else
+      states = []
+    end
+    
 		if states.include?("Red")
 			"Red"
 		elsif states.include?("Amber")
@@ -38,8 +42,7 @@ class Employee < ActiveRecord::Base
   end
   
   def calculate_status()
-    #self.status = get_status(id)
-    self.status = params[:id]
+    self.status = get_status(id)
   end
 
   def self.find_with_options(status = nil)
